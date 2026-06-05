@@ -1,0 +1,10 @@
+Hermes is developed by Nous Research and is licensed under the MIT License.
+
+This project is an unofficial Chinese localization patch project for the
+official Hermes Desktop app. It does not redistribute Hermes binaries, app.asar,
+private credentials, or the complete upstream source tree.
+
+Users must install the official Hermes Desktop app first, then apply this patch
+locally. Hermes trademarks, logos, and upstream source code remain owned by
+their respective rights holders.
+
