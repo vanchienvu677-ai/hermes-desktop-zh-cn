@@ -1,0 +1,36 @@
+name: Maintenance
+
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  weekly-health-check:
+    name: Weekly health check
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate repository shape
+        run: |
+          test -f README.md
+          test -f LICENSE
+          test -f NOTICE
+          test -f docs/UPGRADE.md
+          test -f docs/VERIFY.md
+          test -x scripts/apply-macos.sh
+          test -x scripts/export-patch.sh
+          test -s patches/hermes-desktop-0.15.1-zh-cn.patch
+
+      - name: Check official Hermes desktop page
+        run: |
+          curl -fsSL https://hermes-agent.nousresearch.com/desktop -o hermes-desktop-page.html
+          if grep -q "Hermes" hermes-desktop-page.html; then
+            echo "Official desktop page is reachable."
+          else
+            echo "Official desktop page did not contain expected text."
+            exit 1
+          fi
+

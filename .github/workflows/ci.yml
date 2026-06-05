@@ -1,0 +1,61 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  repository-checks:
+    name: Repository checks
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check shell scripts
+        run: |
+          bash -n scripts/apply-macos.sh
+          bash -n scripts/export-patch.sh
+
+      - name: Check patch files
+        run: |
+          test -s patches/hermes-desktop-0.15.1-zh-cn.patch
+          grep -q "apps/desktop" patches/hermes-desktop-0.15.1-zh-cn.patch
+
+      - name: Reject forbidden artifacts
+        run: |
+          forbidden="$(find . -path ./.git -prune -o -type f \( \
+            -name '*.asar' -o \
+            -name '.env' -o \
+            -name '*.key' -o \
+            -name '*.pem' -o \
+            -name '*.p12' -o \
+            -name '*.dmg' -o \
+            -name '*.zip' \
+          \) -print)"
+          if [ -n "$forbidden" ]; then
+            echo "Forbidden files found:"
+            echo "$forbidden"
+            exit 1
+          fi
+
+      - name: Scan for obvious secrets
+        run: |
+          if grep -RInE 'sk-[A-Za-z0-9]{20,}|api[_-]?key[[:space:]]*=|token[[:space:]]*=|password[[:space:]]*=|BEGIN (RSA|OPENSSH|PRIVATE) KEY' \
+            --exclude-dir=.git \
+            --exclude='*.patch' \
+            .; then
+            echo "Potential secret pattern found."
+            exit 1
+          fi
+
+      - name: Print patch summary
+        run: |
+          git apply --numstat patches/hermes-desktop-0.15.1-zh-cn.patch | tee patch-numstat.txt
+          files_changed="$(wc -l < patch-numstat.txt | tr -d ' ')"
+          echo "Patch touches $files_changed files."
+          test "$files_changed" -gt 0
+

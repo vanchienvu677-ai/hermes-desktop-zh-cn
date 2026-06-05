@@ -90,9 +90,18 @@ hermes-desktop-zh-cn/
 
 导出前请确认 `~/.hermes/hermes-agent/apps/desktop` 里只包含你想公开的中文补丁改动。
 
+## 自动化维护
+
+仓库已配置 GitHub Actions：
+
+- `CI`：push 和 PR 时检查脚本语法、补丁文件、敏感文件和明显密钥。
+- `Maintenance`：每周检查仓库结构，并确认官方 Hermes Desktop 页面可访问。
+- Dependabot：自动检查 GitHub Actions 依赖更新。
+
+维护流程详见 [维护说明](docs/MAINTAINERS.md)。
+
 ## 许可证
 
 本项目的脚本和文档使用 MIT License。
 
 Hermes 官方项目本身由 Nous Research 维护并使用 MIT License。详见 `NOTICE`。本项目不是 Nous Research 官方项目。
-

@@ -6,4 +6,4 @@
 - 新增 Hermes Desktop `0.15.1` 中文补丁。
 - 新增 macOS 一键应用脚本。
 - 新增升级、验证、贡献和安全说明。
-
+- 新增 GitHub Actions、Dependabot、Issue 模板和维护说明。

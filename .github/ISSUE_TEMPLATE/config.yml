@@ -1,0 +1,6 @@
+blank_issues_enabled: true
+contact_links:
+  - name: 官方 Hermes Desktop
+    url: https://hermes-agent.nousresearch.com/desktop
+    about: 官方安装包、账号和上游问题请优先查看 Hermes 官方页面。
+
