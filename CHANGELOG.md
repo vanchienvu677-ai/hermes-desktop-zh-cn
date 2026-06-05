@@ -1,6 +1,6 @@
 # 变更记录
 
-## Unreleased
+## v0.15.1-zh-cn.1
 
 - 整理为独立 Hermes Desktop 中文补丁项目。
 - 新增 Hermes Desktop `0.15.1` 中文补丁。
