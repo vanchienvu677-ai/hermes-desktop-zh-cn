@@ -22,6 +22,7 @@ HERMES_VERSION=新版本号 ./scripts/export-patch.sh
 ```bash
 bash -n scripts/apply-macos.sh
 bash -n scripts/export-patch.sh
+bash -n scripts/restore-macos.sh
 find . -type f \( -name '*.asar' -o -name '.env' -o -name '*.key' -o -name '*.pem' -o -name '*.p12' -o -name '*.dmg' -o -name '*.zip' \) -print
 ```
 
@@ -31,5 +32,5 @@ find . -type f \( -name '*.asar' -o -name '.env' -o -name '*.key' -o -name '*.pe
 
 - `CI`：每次 push 和 PR 检查脚本、补丁、敏感文件和明显密钥。
 - `Maintenance`：每周检查仓库结构，并确认官方 Hermes Desktop 页面可访问。
+- `Pages`：发布 `docs/index.html` 作为项目页。
 - Dependabot：每周检查 GitHub Actions 版本更新。
-

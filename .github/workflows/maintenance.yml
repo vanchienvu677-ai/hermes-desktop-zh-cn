@@ -20,8 +20,12 @@ jobs:
           test -f NOTICE
           test -f docs/UPGRADE.md
           test -f docs/VERIFY.md
+          test -f docs/index.html
+          test -f resources/release.json
+          test -x install-mac.command
           test -x scripts/apply-macos.sh
           test -x scripts/export-patch.sh
+          test -x scripts/restore-macos.sh
           test -s patches/hermes-desktop-0.15.1-zh-cn.patch
 
       - name: Check official Hermes desktop page
@@ -33,4 +37,3 @@ jobs:
             echo "Official desktop page did not contain expected text."
             exit 1
           fi
-

@@ -20,10 +20,16 @@
 
 ## 快速使用
 
-默认路径适用于 macOS：
+macOS 可双击根目录的 `install-mac.command`，也可以在终端运行：
 
 ```bash
 cd hermes-desktop-zh-cn
+./install-mac.command
+```
+
+如果你只想直接重新应用补丁：
+
+```bash
 ./scripts/apply-macos.sh
 ```
 
@@ -37,6 +43,12 @@ cd hermes-desktop-zh-cn
 6. 写回构建后的中文资源
 7. 更新 `ElectronAsarIntegrity` 哈希
 8. 重新签名并启动 Hermes
+
+恢复最近一次汉化前备份：
+
+```bash
+./scripts/restore-macos.sh
+```
 
 如果你的路径不同：
 
@@ -52,12 +64,18 @@ HERMES_REPO="$HOME/.hermes/hermes-agent" \
 hermes-desktop-zh-cn/
 ├── patches/
 │   └── hermes-desktop-0.15.1-zh-cn.patch
+├── resources/
+│   └── release.json
 ├── scripts/
 │   ├── apply-macos.sh
-│   └── export-patch.sh
+│   ├── export-patch.sh
+│   └── restore-macos.sh
 ├── docs/
+│   ├── index.html
+│   ├── MAINTAINERS.md
 │   ├── UPGRADE.md
 │   └── VERIFY.md
+├── install-mac.command
 ├── LICENSE
 ├── NOTICE
 └── README.md
@@ -96,6 +114,7 @@ hermes-desktop-zh-cn/
 
 - `CI`：push 和 PR 时检查脚本语法、补丁文件、敏感文件和明显密钥。
 - `Maintenance`：每周检查仓库结构，并确认官方 Hermes Desktop 页面可访问。
+- `Pages`：把 `docs/index.html` 发布成 GitHub Pages 项目页。
 - Dependabot：自动检查 GitHub Actions 依赖更新。
 
 维护流程详见 [维护说明](docs/MAINTAINERS.md)。

@@ -17,13 +17,16 @@ jobs:
 
       - name: Check shell scripts
         run: |
+          bash -n install-mac.command
           bash -n scripts/apply-macos.sh
           bash -n scripts/export-patch.sh
+          bash -n scripts/restore-macos.sh
 
       - name: Check patch files
         run: |
           test -s patches/hermes-desktop-0.15.1-zh-cn.patch
           grep -q "apps/desktop" patches/hermes-desktop-0.15.1-zh-cn.patch
+          test -s resources/release.json
 
       - name: Reject forbidden artifacts
         run: |
@@ -58,4 +61,3 @@ jobs:
           files_changed="$(wc -l < patch-numstat.txt | tr -d ' ')"
           echo "Patch touches $files_changed files."
           test "$files_changed" -gt 0
-
