@@ -1,5 +1,9 @@
 # 变更记录
 
+## v0.15.1-zh-cn.3
+
+- 修复 GitHub Pages workflow，使项目页能稳定发布。
+
 ## v0.15.1-zh-cn.2
 
 - 参考成熟桌面端汉化补丁项目，新增双击安装入口、恢复脚本、release 元数据和 GitHub Pages 项目页。
