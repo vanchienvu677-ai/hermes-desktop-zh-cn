@@ -33,4 +33,8 @@ find . -type f \( -name '*.asar' -o -name '.env' -o -name '*.key' -o -name '*.pe
 - `CI`：每次 push 和 PR 检查脚本、补丁、敏感文件和明显密钥。
 - `Maintenance`：每周检查仓库结构，并确认官方 Hermes Desktop 页面可访问。
 - `Pages`：发布 `docs/index.html` 作为项目页。
-- Dependabot：每周检查 GitHub Actions 版本更新。
+- Dependabot：每月检查 GitHub Actions 版本更新，最多保留 1 个更新 PR。
+
+## 自动巡检策略
+
+Codex 自动巡检只做报告，不自动修改、提交、推送、合并 PR 或发布 Release。涉及升级、依赖更新和脚本改动时，先由用户确认。

@@ -115,7 +115,7 @@ hermes-desktop-zh-cn/
 - `CI`：push 和 PR 时检查脚本语法、补丁文件、敏感文件和明显密钥。
 - `Maintenance`：每周检查仓库结构，并确认官方 Hermes Desktop 页面可访问。
 - `Pages`：把 `docs/index.html` 发布成 GitHub Pages 项目页。
-- Dependabot：自动检查 GitHub Actions 依赖更新。
+- Dependabot：每月检查 GitHub Actions 依赖更新，最多保留 1 个更新 PR。
 
 维护流程详见 [维护说明](docs/MAINTAINERS.md)。
 

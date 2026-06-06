@@ -1,5 +1,10 @@
 # 变更记录
 
+## Unreleased
+
+- 将自动巡检改为每周只报告，不自动改动仓库。
+- 将 Dependabot 调整为每月检查，最多保留 1 个更新 PR。
+
 ## v0.15.1-zh-cn.3
 
 - 修复 GitHub Pages workflow，使项目页能稳定发布。
